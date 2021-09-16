@@ -2,7 +2,6 @@
 import { onMount } from "svelte";
 	let stream
 	onMount(async ()=>{
-		stream = await navigator.mediaDevices.getUserMedia()
 	})
 </script>
 
