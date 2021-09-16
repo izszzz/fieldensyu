@@ -1,8 +1,10 @@
 <script>
+import { onDestroy } from "svelte";
+
 import { writable } from "svelte/store";
 	const name = writable(localStorage.getItem("name") || "")
-	unsubscribe = name.subscribe(val=>localStorage.setItem("name", val))
-	
+	const unsubscribe = name.subscribe(val=>localStorage.setItem("name", val))
+	onDestroy(unsubscribe)
 </script>
 
 <main>
