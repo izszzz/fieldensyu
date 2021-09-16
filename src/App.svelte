@@ -6,7 +6,7 @@
 	import SettingsPage from "./pages/Settings.svelte"
 </script>
 
-<Router>
+<Router basepath="/fieldensyu">
 	<Header/>
 		<Route path="settings" component={SettingsPage} />
 		<Route path="/" component={HomePage}/>
