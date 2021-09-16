@@ -1,9 +1,12 @@
+<script>
+	import {link} from 'svelte-spa-router';
+</script>
 <footer>
 	<ul>
-		<li>ホーム</li>
+		<li><a href="/" use:link>ホーム</a></li>
 		<li>スコア</li>
 		<li>情報</li>
-		<li>設定</li>
+		<li><a href="/settings" use:link>設定</a></li>
 	</ul>
 </footer>
 
