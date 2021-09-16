@@ -6,5 +6,14 @@ import { onMount } from "svelte";
 </script>
 
 <main>
-	<input type="file" accept="image/*;capture=camera">
+	<input id="camera" type="file" accept="image/*;capture=camera">
+	<label for="camera">
+		camera
+	</label>
 </main>
+
+<style>
+	#camera{
+		display: none;
+	}
+</style>
