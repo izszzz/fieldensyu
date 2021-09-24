@@ -1,15 +1,23 @@
 <script>
+	import gapi from 'gapi';
 </script>
 
 <main>
-	<input id="camera" type="file" accept="image/*;capture=camera">
-	<label for="camera">
-		camera
-	</label>
+	<form>
+		<label>
+			写真を選ぶ
+			<input type="file" accept="image/*;capture=camera"/>
+		</label>
+		<label>
+			動物名
+			<input />
+		</label>
+		<button>保存</button>
+	</form>
 </main>
 
 <style>
-	#camera{
+	input[type=file]{
 		display: none;
 	}
 </style>
