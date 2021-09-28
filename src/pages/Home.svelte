@@ -1,11 +1,13 @@
 <script>
 import { onMount } from "svelte";
+import { writable } from "svelte/store";
 	const API_KEY = "AIzaSyBcPAbJojakPqbQ6pXi8P1HRSbuQEHaiiQ"
 	const CLIENT_ID = "570738443611-7le1gj7itglp9tqca6hipkh0mlrn2cck.apps.googleusercontent.com"
 	const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
 	const SCOPES = 'https://www.googleapis.com/auth/drive';
 	let value, files=[], images=[];
 	const folderId = "1rBCtWoBhZBwzJCkydSjZJAkGAhQN__Te"
+	const name = writable(localStorage.getItem("name") || "")
 	function handleClientLoad() {
 		gapi.load('client:auth2', initClient);
 	}
@@ -48,19 +50,13 @@ import { onMount } from "svelte";
 	function listFiles(){
 		gapi.client.drive.files.list({q:'"1rBCtWoBhZBwzJCkydSjZJAkGAhQN__Te" in parents'}).then(res=>{
 			images = res.result.files
-			console.log(res)
 		})
 	}
 	function uploadImage(){
 		const file = files[0]
 		const blob = new Blob([file])
-		var fileMetadata = {
-			"name": Date.now() + '_' + value + ".jpg",
-			parents: [folderId]
-		};
 		gapi.client.drive.files.create({
-			resource: fileMetadata,
-			name: Date.now() + '_' + value + ".jpg",
+			name: Date.now() + '_' + value + '_' + $name + ".jpg",
 			parents: [folderId],
 		}).then(res=>{
 			fetch(`https://www.googleapis.com/upload/drive/v3/files/${res.result.id}`, {
@@ -70,11 +66,13 @@ import { onMount } from "svelte";
 				'Content-Type': file.type
 				}),
 				body:  blob
-			})
+			}).then(res=>res.json())
+			.then(res=>images = [res, ...images])
 		})
 	}
 	onMount(()=>{
 		handleClientLoad()
+		console.log($name)
 	})
 </script>
 

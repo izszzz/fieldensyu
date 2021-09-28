@@ -12,10 +12,11 @@
 
 <style>
 	footer{
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		background: white;
 	}
 	ul {
 		display: flex;
