@@ -1,7 +1,5 @@
 <script>
 import { onMount } from "svelte";
-// APIKEY
-// AIzaSyBcPAbJojakPqbQ6pXi8P1HRSbuQEHaiiQ
 	const API_KEY = "AIzaSyBcPAbJojakPqbQ6pXi8P1HRSbuQEHaiiQ"
 	const CLIENT_ID = "570738443611-7le1gj7itglp9tqca6hipkh0mlrn2cck.apps.googleusercontent.com"
 	const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
@@ -110,5 +108,8 @@ import { onMount } from "svelte";
 <style>
 	input[type=file]{
 		display: none;
+	}
+	img{
+		width: 100%;
 	}
 </style>
