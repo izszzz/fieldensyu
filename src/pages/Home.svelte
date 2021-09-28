@@ -1,6 +1,7 @@
 <script>
 import { onMount } from "svelte";
 import { writable } from "svelte/store";
+import Card from '../components/Card.svelte';
 	const API_KEY = "AIzaSyBcPAbJojakPqbQ6pXi8P1HRSbuQEHaiiQ"
 	const CLIENT_ID = "570738443611-7le1gj7itglp9tqca6hipkh0mlrn2cck.apps.googleusercontent.com"
 	const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
@@ -50,6 +51,7 @@ import { writable } from "svelte/store";
 	function listFiles(){
 		gapi.client.drive.files.list({q:'"1rBCtWoBhZBwzJCkydSjZJAkGAhQN__Te" in parents'}).then(res=>{
 			images = res.result.files
+			console.log(images)
 		})
 	}
 	function uploadImage(){
@@ -72,7 +74,6 @@ import { writable } from "svelte/store";
 	}
 	onMount(()=>{
 		handleClientLoad()
-		console.log($name)
 	})
 </script>
 
@@ -97,7 +98,7 @@ import { writable } from "svelte/store";
 	<div class="images">
 		<ul>
 			{#each images as image}
-				<img src={`https://drive.google.com/uc?export=view&id=${image.id}&usp=sharing`} alt="">
+				<Card {image}/>
 			{/each}
 		</ul>
 	</div>
@@ -107,7 +108,7 @@ import { writable } from "svelte/store";
 	input[type=file]{
 		display: none;
 	}
-	img{
-		width: 100%;
+	.images{
+		padding-bottom: 50px;
 	}
 </style>
