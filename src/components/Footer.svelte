@@ -5,7 +5,7 @@
 	<ul>
 		<li><Link to="/">ホーム</Link></li>
 		<li>スコア</li>
-		<li>情報</li>
+		<li><Link to="info">情報</Link></li>
 		<li><Link to="settings">設定</Link></li>
 	</ul>
 </footer>
