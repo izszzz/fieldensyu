@@ -10,7 +10,7 @@
 <img src={`https://drive.google.com/uc?export=view&id=${image.id}&usp=sharing`} alt="">
 <p>{parseDate(date)}</p>
 <p>{animalName}</p>
-<p>{name}</p>
+<p>{name.replace(".jpg", "")}</p>
 
 <style>
 	img{
