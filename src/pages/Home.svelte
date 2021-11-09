@@ -79,20 +79,23 @@ import Card from '../components/Card.svelte';
 
 <main>
 	<form>
-		<button type="button" on:click={handleAuthClick}>Google連携</button>
-		<button type="button" on:click={handleSignoutClick}>ログアウト</button>
+		<button type="button" class="auth" on:click={handleAuthClick}>Google連携</button>
+		<button type="button" class="signout" on:click={handleSignoutClick}>サインアウト</button>
 	</form>
-	<form>
-		<label>
-			写真を選ぶ
-			<input type="file" accept="image/*;capture=camera" bind:files/>
-			<img src={files.length ? URL.createObjectURL(files[0]): ""} alt="">
-		</label>
-		<label>
-			動物名
-			<input bind:value/>
-		</label>
-		<button type="button" on:click={uploadImage}>保存</button>
+	<form class="form2">
+		<p>動物を投稿する</p>
+		<div>
+			<label class="photo">
+				写真を選ぶ
+				<input type="file" accept="image/*;capture=camera" bind:files/>
+				<img src={files.length ? URL.createObjectURL(files[0]): ""} alt="">
+			</label>
+			<label>
+				動物名
+				<input bind:value />
+			</label>
+			<button type="button" class="save" on:click={uploadImage}>保存</button>
+		</div>
 	</form>
 
 	<div class="images">
@@ -105,10 +108,36 @@ import Card from '../components/Card.svelte';
 </main>
 
 <style>
-	input[type=file]{
+	input[type=file] {
 		display: none;
+	}
+	button {
+		cursor: pointer;
+		padding: 20px;
+		color: white;
+		border: solid 1px white;
+	}
+	button.auth{
+		background: #78bbff;
+	}
+	button.signout{
+		background: red;
+	}
+	button.save{
+		background: green;
+	}
+	label.photo{
+		display: inline-block;
+		background: #78bbff;
+		padding: 20px;
+		color: white;
 	}
 	.images{
 		padding-bottom: 50px;
+	}
+	.form2{
+		border: solid 1px black;
+		padding: 10px;
+		border-radius: 5px;
 	}
 </style>

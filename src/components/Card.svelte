@@ -7,13 +7,21 @@
 	}
 </script>
 
-<img src={`https://drive.google.com/uc?export=view&id=${image.id}&usp=sharing`} alt="">
-<p>{parseDate(date)}</p>
-<p>動物:{animalName}</p>
-<p>ユーザー名:{name.replace(".jpg", "")}</p>
+<div class="card">
+	<img src={`https://drive.google.com/uc?export=view&id=${image.id}&usp=sharing`} alt="">
+	<p class="animalname">動物:{animalName}</p>
+	<p class="username">ユーザー名:{name.replace(".jpg", "")}</p>
+	<p class="date">{parseDate(date)}</p>
+</div>
 
 <style>
 	img{
 		width: 100%;
+	}
+	.date{
+		color: gray;
+	}
+	.card{
+		background: #dedede;
 	}
 </style>
